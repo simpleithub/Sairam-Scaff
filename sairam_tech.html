@@ -2,12 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sairam Tech - Products</title>
+    <link rel="stylesheet" href="static/styles.css">
     <link rel="stylesheet" href="static/sairam_tech.css">
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- EmailJS library for form submission -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- EmailJS Configuration -->
+    <script src="static/js/emailjs-config.js"></script>
 </head>
 <body>
+    <!-- Floating Get Quote Button -->
+    <a href="#contact" class="floating-quote-btn" id="floatingQuoteBtn">
+        <i class="fas fa-comment-dots"></i>
+        <span>Get Quote</span>
+    </a>
+    
     <header class="header beautiful-header">
         <a href="index.html" class="home-icon-link">
             <i class="fas fa-home"></i>
@@ -36,7 +49,7 @@
             <div id="topCupPopup" class="popup">
                 <div class="popup-content">
                     <span class="close" onclick="hidePopup('topCupPopup')">&times;</span>
-                    <img src="static/images/topcup.png" alt="Top Cup Image">
+                    <img src="static/images/topcup.png" alt="Top Cup Image" loading="lazy">
                     <p>Top Cup: Secures horizontal ledgers to vertical standards in the Cup Lock system.</p>
                     <p>Dimension: 360gm</p>
                 </div>
@@ -49,7 +62,7 @@
             <div id="bottomCupPopup" class="popup">
                 <div class="popup-content">
                     <span class="close" onclick="hidePopup('bottomCupPopup')">&times;</span>
-                    <img src="static/images/bottomcup.png" alt="Bottom Cup Image">
+                    <img src="static/images/bottomcup.png" alt="Bottom Cup Image" loading="lazy">
                     <p>Bottom Cup: Fixed on vertical standards to hold ledgers in place before locking.</p>
                     <p>Dimension: 170gm</p>
                 </div>
@@ -62,7 +75,7 @@
             <div id="ledgerBladePopup" class="popup">
                 <div class="popup-content">
                     <span class="close" onclick="hidePopup('ledgerBladePopup')">&times;</span>
-                    <img src="static/images/ledgerblade.png" alt="Ledger Blade Image">
+                    <img src="static/images/ledgerblade.png" alt="Ledger Blade Image" loading="lazy">
                     <p>Ledger Blade: Connects ledgers to vertical standards via the cup joint.</p>
                     <p>Dimension: 180gm</p>
                 </div>
@@ -75,7 +88,7 @@
             <div id="spigotSleevePopup" class="popup">
                 <div class="popup-content">
                     <span class="close" onclick="hidePopup('spigotSleevePopup')">&times;</span>
-                    <img src="static/images/spigot.png" alt="Spigot Image">
+                    <img src="static/images/spigot.png" alt="Spigot Image" loading="lazy">
                     <p>Spigot: Connects and aligns vertical standards for height extension.</p>
                     <p>Dimension: 300mm</p>
                 </div>
@@ -94,7 +107,7 @@
             <div id="pressedSwivelCouplerPopup" class="popup">
                 <div class="popup-content">
                     <span class="close" onclick="hidePopup('pressedSwivelCouplerPopup')">&times;</span>
-                    <img src="static/images/pressedswivel.png" alt="Pressed Swivel Coupler Image">
+                    <img src="static/images/pressedswivel.png" alt="Pressed Swivel Coupler Image" loading="lazy">
                     <p>Pressed Swivel Coupler: Joins tubes at any angle for versatile connections.</p>
                     <p>Dimension: 40x40 - 750gm</p>
                 </div>
@@ -108,7 +121,7 @@
             <div id="pressedRightAngleCouplerPopup" class="popup">
                 <div class="popup-content">
                     <span class="close" onclick="hidePopup('pressedRightAngleCouplerPopup')">&times;</span>
-                    <img src="static/images/pressedright.png" alt="Pressed Right Angle Coupler Image">
+                    <img src="static/images/pressedright.png" alt="Pressed Right Angle Coupler Image" loading="lazy">
                     <p>Pressed Right Angle Coupler: Connects two tubes at a fixed 90° angle.</p>
                     <p>Dimension: 40x40 - 700gm</p>
                 </div>
@@ -342,6 +355,34 @@
     </section>
     <section class="contact-section" id = "contact">
         <h2>CONTACT US</h2>
+        
+        <!-- Contact Form -->
+        <div class="contact-form-container">
+            <form class="contact-form" id="contactForm">
+                <input type="hidden" name="to_email" value="sairamscaff2025@gmail.com">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+                <div class="form-status" id="formStatus"></div>
+            </form>
+        </div>
+        
         <div class="contact-row">
             <div class="contact-card">
                 <i class="fas fa-phone"></i>
@@ -369,6 +410,7 @@
             <strong>Other Pages:</strong>
             <a href="/">Home</a> |
             <a href="/#about">About</a> |
+            <a href="/#iconic-works">Iconic Works</a> |
             <a href="/#services">Services</a> |
             <a href="#contact">Contact</a>
         </div>
@@ -442,6 +484,68 @@
         switchHeroBg();
         // Change image every 4 seconds
         setInterval(switchHeroBg, 4000);
+
+        // Smooth scrolling for floating quote button
+        document.getElementById('floatingQuoteBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#contact').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+
+        // Contact Form Functionality
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const status = document.getElementById('formStatus');
+            const submitBtn = this.querySelector('.submit-btn');
+            
+            // Show loading state
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // EmailJS Configuration
+            // Initialize EmailJS with your public key from configuration
+            emailjs.init(window.EMAILJS_CONFIG.PUBLIC_KEY);
+            
+            // Send form data using EmailJS
+            emailjs.sendForm(window.EMAILJS_CONFIG.SERVICE_ID, window.EMAILJS_CONFIG.TEMPLATE_ID, this)
+                .then(function(response) {
+                    // Success handling
+                    console.log('SUCCESS!', response.status, response.text);
+                    status.innerHTML = 'Thank you! Your message has been sent to sairamscaff2025@gmail.com';
+                    status.className = 'form-status success';
+                    status.style.display = 'block';
+                    
+                    // Reset form
+                    document.getElementById('contactForm').reset();
+                    submitBtn.textContent = 'Send Message';
+                    submitBtn.disabled = false;
+                    
+                    // Hide status after 5 seconds
+                    setTimeout(() => {
+                        status.style.display = 'none';
+                    }, 5000);
+                    
+                }, function(error) {
+                    // Error handling
+                    console.log('FAILED...', error);
+                    status.innerHTML = 'Sorry, there was an error sending your message. Please try again.';
+                    status.className = 'form-status error';
+                    status.style.display = 'block';
+                    
+                    // Reset button
+                    submitBtn.textContent = 'Send Message';
+                    submitBtn.disabled = false;
+                    
+                    // Hide status after 5 seconds
+                    setTimeout(() => {
+                        status.style.display = 'none';
+                    }, 5000);
+                });
+        });
     </script>
     
 </body>

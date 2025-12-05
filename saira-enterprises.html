@@ -2,12 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Saira Enterprises - Products</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sairam Enterprises - Products</title>
+    <link rel="stylesheet" href="static/styles.css">
     <link rel="stylesheet" href="static/saira-enterprises.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- EmailJS library for form submission -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- EmailJS Configuration -->
+    <script src="static/js/emailjs-config.js"></script>
 </head>
 <body>
+    <!-- Floating Get Quote Button -->
+    <a href="#contact" class="floating-quote-btn" id="floatingQuoteBtn">
+        <i class="fas fa-comment-dots"></i>
+        <span>Get Quote</span>
+    </a>
     <header class="header beautiful-header">
         <a href="index.html" class="home-icon-link">
             <i class="fas fa-home"></i>
@@ -33,6 +45,7 @@
             <button class="tab" data-tab="cuplock">Cup Lock Systems</button>
             <button class="tab" data-tab="columnbox">Column Box</button>
             <button class="tab" data-tab="hframe">H-Frame</button>
+            <button class="tab" data-tab="ladder">Scaffolding Ladder</button>
         </div>
         <div class="tab-content active" id="scaffolding">
             <h2>Scaffolding Spans</h2>
@@ -69,143 +82,306 @@
             <p>H-Frames are sturdy scaffolding systems used for creating stable working platforms in vertical construction projects. Their rigid structure ensures safety and ease of access at elevated work areas.</p>
             <a href="#" class="view-more-btn" data-modal="modal-hframe">View More</a>
         </div>
+        <div class="tab-content" id="hframe">
+            <h2>H-Frame</h2>
+            <p>H-Frames are sturdy scaffolding systems used for creating stable working platforms in vertical construction projects. Their rigid structure ensures safety and ease of access at elevated work areas.</p>
+            <a href="#" class="view-more-btn" data-modal="modal-hframe">View More</a>
+        </div><div class="tab-content" id="ladder">
+            <h2>Scaffolding Ladder</h2>
+            <p>Scaffolding Ladders are vertical scaffolding systems used for lifting and lowering scaffolding spans. They provide a safe and efficient way to access and maintain scaffolding at elevated heights.</p>
+            <a href="#" class="view-more-btn" data-modal="modal-ladder">View More</a>
+        </div>
     </div>
 
     <!-- MODALS -->
     <div class="modal" id="modal-scaffolding">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-images">
-                <img src="static/images/span1.jpeg" alt="Scaffolding Spans 1" class="modal-img">
-                <img src="static/images/span2.jpeg" alt="Scaffolding Spans 2" class="modal-img">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2 class="modal-title">Scaffolding Spans</h2>
             </div>
-            <h3>FEATURES & BENEFITS</h3>
-            <ul>
-                <li>High-strength, anti-corrosion spans ensuring stable, evenly loaded platforms.</li>
-                <li>Easy assembly and adaptable to varied scaffolding systems.</li>
-            </ul>
-            <h3>SIZE</h3>
-            <ul>
-                <li>ESO+ESI - 1.7M to 2.7M</li>
-                <li>SO+SI - 2.5M to 4.15M</li>
-                <li>LO+LI - 3.15M to 5.5M</li>
-            </ul>
+            <div class="modal-body">
+                <div class="modal-images">
+                    <img src="static/images/span1.jpeg" alt="Scaffolding Spans 1" class="modal-img" loading="lazy">
+                    <img src="static/images/span2.jpeg" alt="Scaffolding Spans 2" class="modal-img" loading="lazy">
+                </div>
+                <div class="modal-info-grid">
+                    <div class="modal-info-card">
+                        <h3>Features & Benefits</h3>
+                        <ul>
+                            <li>High-strength, anti-corrosion spans ensuring stable, evenly loaded platforms</li>
+                            <li>Easy assembly and adaptable to varied scaffolding systems</li>
+                            <li>Superior load distribution for enhanced safety</li>
+                        </ul>
+                    </div>
+                    <div class="modal-info-card modal-specs">
+                        <h3>Available Sizes</h3>
+                        <div class="spec-item">
+                            <strong>ESO+ESI:</strong>
+                            <span>1.7M to 2.7M</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>SO+SI:</strong>
+                            <span>2.5M to 4.15M</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>LO+LI:</strong>
+                            <span>3.15M to 5.5M</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="modal" id="modal-floorform">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-images">
-                <img src="static/images/floorform1.jpeg" alt="Floor Form 1" class="modal-img">
-                <img src="static/images/floorform2.jpeg" alt="Floor Form 2" class="modal-img">
+            <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2 class="modal-title">Floor Form</h2>
+                </div>
+            <div class="modal-body">
+                <div class="modal-images">
+                    <img src="static/images/floorform1.jpeg" alt="Floor Form 1" class="modal-img" loading="lazy">
+                    <img src="static/images/floorform2.jpeg" alt="Floor Form 2" class="modal-img" loading="lazy">
+                </div>
+                <div class="modal-info-grid">
+                    <div class="modal-info-card">
+                        <h3>Features & Benefits</h3>
+                        <ul>
+                            <li>Heavy-duty, precision-made steel forms for consistent slab dimensions</li>
+                            <li>Corrosion-resistant, reusable, and quick to install or dismantle</li>
+                            <li>Smooth finish quality for professional concrete surfaces</li>
+                        </ul>
+                    </div>
+                    <div class="modal-info-card modal-specs">
+                        <h3>Available Sizes</h3>
+                        <div class="spec-item">
+                            <strong>Standard Dimensions:</strong>
+                            <span>900mm x 600mm - 14kg</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong></strong>
+                            <span>1150mm x 600mm - 17kg</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h3>FEATURES & BENEFITS</h3>
-            <ul>
-                <li>Heavy-duty, precision-made steel forms for consistent slab dimensions.</li>
-                <li>Corrosion-resistant, reusable, and quick to install or dismantle.</li>
-            </ul>
-            <h3>SIZE</h3>
-            <ul>
-                <li>900mm x 600mm - 14kg</li>
-                <li>1150mm x 600mm - 17kg</li>
-            </ul>
         </div>
     </div>
     <div class="modal" id="modal-anglefloor">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-images">
-                <img src="static/images/anglefloor1.png" alt="Angle Floor Form 1" class="modal-img">
-                <img src="static/images/anglefloor2.png" alt="Angle Floor Form 2" class="modal-img">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2 class="modal-title">Angle & Adjuster Floor Forms</h2>
             </div>
-            <h3>FEATURES & BENEFITS</h3>
-            <ul>
-                <li>High-strength steel with accurate edge formation and easy handling.</li>
-                <li>Corrosion-resistant, reusable for multiple construction projects.</li>
-            </ul>
-            <h3>SIZE</h3>
-            <ul>
-                <li>Angle: 900 x 600 x 25mm - 18kg</li>
-                <li>Adjuster: 900 x 450 & 350, 1150 x 450 & 350</li>
-            </ul>
+            <div class="modal-body">
+                <div class="modal-images">
+                    <img src="static/images/anglefloor1.png" alt="Angle Floor Form 1" class="modal-img" loading="lazy">
+                    <img src="static/images/anglefloor2.png" alt="Angle Floor Form 2" class="modal-img" loading="lazy">
+                </div>
+                <div class="modal-info-grid">
+                    <div class="modal-info-card">
+                        <h3>Features & Benefits</h3>
+                        <ul>
+                            <li>High-strength steel with accurate edge formation and easy handling</li>
+                            <li>Corrosion-resistant, reusable for multiple construction projects</li>
+                            <li>Precise alignment for professional concrete finishes</li>
+                        </ul>
+                    </div>
+                    <div class="modal-info-card modal-specs">
+                        <h3>Available Sizes</h3>
+                        <div class="spec-item">
+                            <strong>Angle:</strong>
+                            <span>900 x 600 x 25mm - 18kg</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Adjuster:</strong>
+                            <span>900 x 450 & 350, 1150 x 450 & 350</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="modal" id="modal-adjuster">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-images">
-                <img src="static/images/prop1.jpeg" alt="Floor Form Adjuster 1" class="modal-img">
-                <img src="static/images/prop2.jpeg" alt="Floor Form Adjuster 2" class="modal-img">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2 class="modal-title">Prop</h2>
             </div>
-            <h3>FEATURES & BENEFITS</h3>
-            <ul>
-                <li>Height-adjustable design for flexible and precise support.</li>
-                <li>Heavy-duty construction ensures durability and high load capacity.</li>
-            </ul>
-            <h3>SIZE</h3>
-            <ul>
-                <li>1M - 1mt to 1.8mt</li>
-                <li>1.5M - 1.5mt to 2.8mt</li>
-                <li>2M - 2mt to 3.8mt</li>
-                <li>2.5M - 3mt to 4.8mt</li>
-                <li>3M - 3mt to 5.8mt</li>
-            </ul>
+            <div class="modal-body">
+                <div class="modal-images">
+                    <img src="static/images/prop1.jpeg" alt="Floor Form Adjuster 1" class="modal-img" loading="lazy">
+                    <img src="static/images/prop2.jpeg" alt="Floor Form Adjuster 2" class="modal-img" loading="lazy">
+                </div>
+                <div class="modal-info-grid">
+                    <div class="modal-info-card">
+                        <h3>Features & Benefits</h3>
+                        <ul>
+                            <li>Height-adjustable design for flexible and precise support.</li>
+                            <li>Heavy-duty construction ensures durability and high load capacity.</li>
+                        </ul>
+                    </div>
+                    <div class="modal-info-card modal-specs">
+                        <h3>Available Sizes</h3>
+                        <div class="spec-item">
+                            <strong>1M:</strong>
+                            <span>1mt to 1.8mt</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>1.5M:</strong>
+                            <span>1.5mt to 2.8mt</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>2M:</strong>
+                            <span>2mt to 3.8mt</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>2.5M:</strong>
+                            <span>3mt to 4.8mt</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>3M:</strong>
+                            <span>3mt to 5.8mt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="modal" id="modal-cuplock">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-images">
-                <img src="static/images/cuplock1.jpeg" alt="Cup Lock System 1" class="modal-img">
-                <img src="static/images/cuplock2.jpeg" alt="Cup Lock System 2" class="modal-img">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2 class="modal-title">Cup Lock System</h2>
             </div>
-            <h3>FEATURES & BENEFITS</h3>
-            <ul>
-                <li>High load-bearing, tool-free assembly with secure, stable support.</li>
-                <li>Corrosion-resistant and adaptable for diverse site requirements.</li>
-            </ul>
-            <h3>SIZE</h3>
-            <ul>
-                <li>Vertical - 1M, 1.5M, 2M, 2.5M & 3M</li>
-                <li>Ledger - 1M, 1.2M, 1.5M, 1.8M & 2M</li>
-            </ul>
+            <div class="modal-body">
+                <div class="modal-images">
+                    <img src="static/images/cuplock1.jpeg" alt="Cup Lock System 1" class="modal-img" loading="lazy">
+                    <img src="static/images/cuplock2.jpeg" alt="Cup Lock System 2" class="modal-img" loading="lazy">
+                </div>
+                <div class="modal-info-grid">
+                    <div class="modal-info-card">
+                        <h3>Features & Benefits</h3>
+                        <ul>
+                            <li>High load-bearing, tool-free assembly with secure, stable support.</li>
+                            <li>Corrosion-resistant and adaptable for diverse site requirements.</li>
+                            <li>Modular design allows for quick installation and dismantling.</li>
+                        </ul>
+                    </div>
+                    <div class="modal-info-card modal-specs">
+                        <h3>Available Sizes</h3>
+                        <div class="spec-item">
+                            <strong>Vertical:</strong>
+                            <span>1M, 1.5M, 2M, 2.5M & 3M</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Ledger:</strong>
+                            <span>1M, 1.2M, 1.5M, 1.8M & 2M</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div class="modal" id="modal-ladder">
+        <div class="modal-content">
+            <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2 class="modal-title">Scaffolding Ladder</h2>
+                </div>
+            <div class="modal-body">
+                <div class="modal-images">
+                    <img src="static/images/ladder1.jpeg" alt="Scaffolding Ladder 1" class="modal-img" loading="lazy">
+                    <img src="static/images/ladder2.png" alt="Scaffolding Ladder 2" class="modal-img" loading="lazy">
+                </div>
+                <div class="modal-info-grid">
+                    <div class="modal-info-card">
+                        <h3>Features & Benefits</h3>
+                        <ul>
+                            <li>Lightweight, durable, and easy to use.</li>
+                            <li>Adjustable height for flexible support.</li>
+                            <li>High-strength steel construction for stable and secure vertical access.</li>
+                        </ul>
+                    </div>
+                    <div class="modal-info-card modal-specs">
+                        <h3>Available Sizes</h3>
+                        <div class="spec-item">
+                            <strong>Customizable</strong>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal" id="modal-columnbox">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-images">
-                <img src="static/images/columnbox1.jpeg" alt="Column Box 1" class="modal-img">
-                <img src="static/images/columnbox2.jpeg" alt="Column Box 2" class="modal-img">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2 class="modal-title">Column Box</h2>
             </div>
-            <h3>FEATURES & BENEFITS</h3>
-            <ul>
-                <li>Heavy-duty, reusable systems offering precise column shaping.</li>
-                <li>Easy to assemble, with options for multiple project specifications.</li>
-            </ul>
-            <h3>SIZE</h3>
-            <ul>
-                <li>Height: 4ft, 5ft, 7ft & 8ft</li>
-                <li>Width: 3/4ft, 1ft, 1.1/4ft, 1.1/2ft & 2ft</li>
-            </ul>
+            <div class="modal-body">
+                <div class="modal-images">
+                    <img src="static/images/columnbox1.jpeg" alt="Column Box 1" class="modal-img" loading="lazy">
+                    <img src="static/images/columnbox2.jpeg" alt="Column Box 2" class="modal-img" loading="lazy">
+                </div>
+                <div class="modal-info-grid">
+                    <div class="modal-info-card">
+                        <h3>Features & Benefits</h3>
+                        <ul>
+                            <li>Heavy-duty, reusable systems offering precise column shaping.</li>
+                            <li>Easy to assemble, with options for multiple project specifications.</li>
+                            <li>Durable construction ensures long-term reliability and cost-effectiveness.</li>
+                        </ul>
+                    </div>
+                    <div class="modal-info-card modal-specs">
+                        <h3>Available Sizes</h3>
+                        <div class="spec-item">
+                            <strong>Height:</strong>
+                            <span>4ft, 5ft, 7ft & 8ft</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Width:</strong>
+                            <span>3/4ft, 1ft, 1.1/4ft, 1.1/2ft & 2ft</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="modal" id="modal-hframe">
+
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-images">
-                <img src="static/images/hframe1.jpeg" alt="H-Frame 1" class="modal-img">
-                <img src="static/images/hframe2.png" alt="H-Frame 2" class="modal-img">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2 class="modal-title">H-Frame</h2>
             </div>
-            <h3>FEATURES & BENEFITS</h3>
-            <ul>
-                <li>Robust, corrosion-resistant frames with high load capacity.</li>
-                <li>Quick setup and dismantling, ideal for general construction use.</li>
-            </ul>
-            <h3>SIZE</h3>
-            <ul>
-                <li>2M X 1M, 2M X 1.25M, 2M X 2M</li>
-            </ul>
+            <div class="modal-body">
+                <div class="modal-images">
+                    <img src="static/images/hframe1.jpeg" alt="H-Frame 1" class="modal-img" loading="lazy">
+                    <img src="static/images/hframe2.png" alt="H-Frame 2" class="modal-img" loading="lazy">
+                </div>
+                <div class="modal-info-grid">
+                    <div class="modal-info-card">
+                        <h3>Features & Benefits</h3>
+                        <ul>
+                            <li>Robust, corrosion-resistant frames with high load capacity.</li>
+                            <li>Quick setup and dismantling, ideal for general construction use.</li>
+                            <li>Versatile design suitable for various construction applications.</li>
+                        </ul>
+                    </div>
+                    <div class="modal-info-card modal-specs">
+                        <h3>Available Sizes</h3>
+                        <div class="spec-item">
+                            <strong>Standard Dimensions:</strong>
+                            <span>2M X 1M, 2M X 1.25M, 2M X 2M</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Lightbox for fullscreen image -->
@@ -215,6 +391,35 @@
     </div>
     <section id = "contact" class="contact-section">
         <h2>CONTACT US</h2>
+        
+        <!-- Contact Form -->
+        <div class="contact-form-container">
+            <form class="contact-form" id="contactForm">
+                <!-- Hidden field for recipient email -->
+                <input type="hidden" name="to_email" value="sairamscaff2025@gmail.com">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+                <div class="form-status" id="formStatus"></div>
+            </form>
+        </div>
+        
         <div class="contact-row">
             <div class="contact-card">
                 <i class="fas fa-phone"></i>
@@ -242,6 +447,7 @@
             <strong>Other Pages:</strong>
             <a href="/">Home</a> |
             <a href="/#about">About</a> |
+            <a href="/#iconic-works">Iconic Works</a> |
             <a href="/#services">Services</a> |
             <a href="#contact">Contact</a>
         </div>
@@ -261,7 +467,7 @@
             <a href="saira-enterprises.html#adjuster">Prop</a> |
             <a href="saira-enterprises.html#cuplock">Cup Lock Systems</a> |
             <a href="saira-enterprises.html#columnbox">Column Box</a> |
-            <a href="saira-enterprises.html#hframe">H-Frame</a>
+            <a href="saira-enterprises.html#modal-hframe">H-Frame</a>
         </div>
         <div class="quick-links-group">
             <strong>Custom Solutions:</strong>
@@ -360,6 +566,68 @@
         switchHeroBg();
         // Change image every 4 seconds
         setInterval(switchHeroBg, 4000);
+
+        // Smooth scrolling for floating quote button
+        document.getElementById('floatingQuoteBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#contact').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+
+        // Contact Form Functionality
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const status = document.getElementById('formStatus');
+            const submitBtn = this.querySelector('.submit-btn');
+            
+            // Show loading state
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // EmailJS Configuration
+            // Initialize EmailJS with your public key from configuration
+            emailjs.init(window.EMAILJS_CONFIG.PUBLIC_KEY);
+            
+            // Send form data using EmailJS
+            emailjs.sendForm(window.EMAILJS_CONFIG.SERVICE_ID, window.EMAILJS_CONFIG.TEMPLATE_ID, this)
+                .then(function(response) {
+                    // Success handling
+                    console.log('SUCCESS!', response.status, response.text);
+                    status.innerHTML = 'Thank you! Your message has been sent to sairamscaff2025@gmail.com';
+                    status.className = 'form-status success';
+                    status.style.display = 'block';
+                    
+                    // Reset form
+                    document.getElementById('contactForm').reset();
+                    submitBtn.textContent = 'Send Message';
+                    submitBtn.disabled = false;
+                    
+                    // Hide status after 5 seconds
+                    setTimeout(() => {
+                        status.style.display = 'none';
+                    }, 5000);
+                    
+                }, function(error) {
+                    // Error handling
+                    console.log('FAILED...', error);
+                    status.innerHTML = 'Sorry, there was an error sending your message. Please try again.';
+                    status.className = 'form-status error';
+                    status.style.display = 'block';
+                    
+                    // Reset button
+                    submitBtn.textContent = 'Send Message';
+                    submitBtn.disabled = false;
+                    
+                    // Hide status after 5 seconds
+                    setTimeout(() => {
+                        status.style.display = 'none';
+                    }, 5000);
+                });
+        });
     </script>
     
 </body>

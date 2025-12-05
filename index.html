@@ -2,12 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAIRAM SCAFF</title>
     <link rel="stylesheet" href="static/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- EmailJS library for form submission -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- EmailJS Configuration -->
+    <script src="static/js/emailjs-config.js"></script>
 </head>
 <body>
+    <!-- Floating Get Quote Button -->
+    <a href="#contact" class="floating-quote-btn" id="floatingQuoteBtn">
+        <i class="fas fa-comment-dots"></i>
+        <span>Get Quote</span>
+    </a>
     <header class="header beautiful-header">
         <div class="header-left">
             <div class="menu-icon" onclick="openSideMenu()">
@@ -21,11 +32,11 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeSideMenu()">&times;</a>
         <a href="#" onclick="closeSideMenu()">Home</a>
         <a href="#about" onclick="closeSideMenu()">About</a>
+        <a href="#iconic-works" onclick="closeSideMenu()">Iconic Works</a>
         <a href="#services" onclick="closeSideMenu()">Services</a>
         <a href="#contact" onclick="closeSideMenu()">Contact</a>
     </div>
-    
-    </header>
+    <div id="sidebarOverlay" class="sidebar-overlay" onclick="closeSideMenu()"></div>
     <section class="hero" id = "hero">
         <div class="hero-content">
             <h1>SAIRAM SCAFF,</h1>
@@ -38,7 +49,9 @@
         <div class="about-card">
             <div class="about-text">
                 <span class="about-highlight">SAIRAM SCAFF</span>
-                <p>A dynamic group comprising <b>Sairam Tech &amp; Sairam Enterprises</b><br>Dedicated to delivering high-quality scaffolding materials, our expertise in manufacturing and trading ensures that we meet the highest industry standards, offering durable, safe, and cost-effective solutions to our clients.<br>We introduce ourselves as one of the best manufacturers of complete Scaffolding Systems for all your conventional / custom made requirements.</p>
+                <img src="static/images/logo.png" alt="Sairam Scaff Logo" class="about-brand-logo">
+                <p>A dynamic group comprising <b>Sairam Tech &amp; Sairam Enterprises</b> Dedicated to delivering high-quality scaffolding materials, our expertise in manufacturing and trading ensures that we meet the highest industry standards, offering durable, safe, and cost-effective solutions to our clients.<br>We introduce ourselves as one of the best manufacturers of complete Scaffolding Systems for all your conventional / custom made requirements.</p>
+                <p style="color: #fc5914;"><b>Branches: Chennai, (Tirunelveli - Launching Soon!)</b></p>
                 <div class="about-divider"></div>
                 
                 <ul class="about-list">
@@ -60,6 +73,86 @@
             
         </div>
     </section>
+    
+    <!-- Our Iconic Works Section -->
+    <section class="iconic-works" id="iconic-works">
+        <h2>OUR ICONIC WORKS</h2>
+        <div class="iconic-works-container">
+            <div class="iconic-work-item" data-work="1">
+                <div class="work-images">
+                    <img src="static/images/acc1.png" alt="Accessories 1" class="work-image work-image-1 active">
+                    <img src="static/images/acc2.png" alt="Accessories 2" class="work-image work-image-2">
+                </div>
+                <div class="work-info">
+                    <h3>Scaffolding Accessories</h3>
+                    <div class="work-details">
+                        <p>Trading and Selling Accessories like Cuplock, Prop, Jack, Couplers.</p>
+                        <p>Location: Chennai, Tirunelveli</p>
+                        
+                    </div>
+                    <a href="sairam_tech.html" class="view-more-btn">
+                        <i class="fas fa-arrow-right"></i> View More
+                    </a>
+                </div>
+            </div>
+            
+            <div class="iconic-work-item" data-work="2">
+                <div class="work-images">
+                    <img src="static/images/anglefloor1.png" alt="Angle Floor Form" class="work-image work-image-1 active">
+                    <img src="static/images/prop2.jpeg" alt="Prop system" class="work-image work-image-2">
+                    <img src="static/images/columnbox1.jpeg" alt="Column Box" class="work-image work-image-3">
+                    <img src="static/images/cuplock2.jpeg" alt="Cuplock System" class="work-image work-image-4">
+                </div>
+                <div class="work-info">
+                    <h3>Scaffolding Products</h3>
+                    <div class="work-details">
+                        <p>Manufacturing Scaffolding Products like floor forms, prop, cuplock systems, hframe, spans, columnbox.</p>
+                        <p>Location: Chennai, Tirunelveli</p>
+                        
+                    </div>
+                    <a href="saira-enterprises.html" class="view-more-btn">
+                        <i class="fas fa-arrow-right"></i> View More
+                    </a>
+                </div>
+            </div>
+            
+            <div class="iconic-work-item" data-work="3">
+                <div class="work-images">
+                    <img src="static/images/service_cust.jpeg" alt="Gas pipeline" class="work-image work-image-1 active">
+                    <img src="static/images/welding2.png" alt="Welding Booth 1" class="work-image work-image-2">
+                    <img src="static/images/welding.jpeg" alt="Welding Booth 2" class="work-image work-image-3">
+                </div>
+                <div class="work-info">
+                    <h3>Customized Products</h3>
+                    <div class="work-details">
+                        <p>Customized scaffolding products for specific needs like pipelines, welding booths, etc.</p>
+                        
+                    </div>
+                    <a href="custom-solutions.html" class="view-more-btn">
+                        <i class="fas fa-arrow-right"></i> View More
+                    </a>
+                </div>
+            </div>
+            
+            <div class="iconic-work-item" data-work="4">
+                <div class="work-images">
+                    <img src="static/images/trolley.jpeg" alt="Bullet Chasis - centre post Trolley" class="work-image work-image-1 active">
+                    <img src="static/images/trolley2.png" alt="Bullet Chasis Trolley" class="work-image work-image-2">
+                    <img src="static/images/trolley3.png" alt="Bullet Sub-frame Trolley" class="work-image work-image-3">
+                </div>
+                <div class="work-info">
+                    <h3>Trolley Manufacturing</h3>
+                    <div class="work-details">
+                        <p>Customized trolleys for industrial applications</p>
+                    </div>
+                    <a href="custom-solutions.html" class="view-more-btn">
+                        <i class="fas fa-arrow-right"></i> View More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section class="services" id="services">
         <h2>SERVICES</h2>
         <div class="services-row">
@@ -82,6 +175,35 @@
     </section>
     <section class="contact-section" id = "contact">
         <h2>CONTACT US</h2>
+        
+        <!-- Contact Form -->
+        <div class="contact-form-container">
+            <form class="contact-form" id="contactForm">
+                <!-- Hidden field for recipient email -->
+                <input type="hidden" name="to_email" value="sairamscaff2025@gmail.com">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+                <div class="form-status" id="formStatus"></div>
+            </form>
+        </div>
+        
         <div class="contact-row">
             <div class="contact-card">
                 <i class="fas fa-phone"></i>
@@ -109,6 +231,7 @@
             <strong>Other Pages:</strong>
             <a href="#">Home</a> |
             <a href="#about">About</a> |
+            <a href="#iconic-works">Iconic Works</a> |
             <a href="#services">Services</a> |
             <a href="#contact">Contact</a>
         </div>
@@ -128,7 +251,7 @@
             <a href="saira-enterprises.html#adjuster">Prop</a> |
             <a href="saira-enterprises.html#cuplock">Cup Lock Systems</a> |
             <a href="saira-enterprises.html#columnbox">Column Box</a> |
-            <a href="saira-enterprises.html#hframe">H-Frame</a>
+            <a href="saira-enterprises.html#modal-hframe">H-Frame</a>
         </div>
         <div class="quick-links-group">
             <strong>Custom Solutions:</strong>
@@ -183,6 +306,175 @@
         switchHeroBg();
         // Change image every 4 seconds
         setInterval(switchHeroBg, 4000);
+
+        // Smooth scrolling for floating quote button
+        document.getElementById('floatingQuoteBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#contact').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+
+        // Contact Form Functionality
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const status = document.getElementById('formStatus');
+            const submitBtn = this.querySelector('.submit-btn');
+            
+            // Show loading state
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // EmailJS Configuration
+            // Initialize EmailJS with your public key from configuration
+            emailjs.init(window.EMAILJS_CONFIG.PUBLIC_KEY);
+            
+            // Send form data using EmailJS
+            emailjs.sendForm(window.EMAILJS_CONFIG.SERVICE_ID, window.EMAILJS_CONFIG.TEMPLATE_ID, this)
+                .then(function(response) {
+                    // Success handling
+                    console.log('SUCCESS!', response.status, response.text);
+                    status.innerHTML = 'Thank you! Your message has been sent to sairamscaff2025@gmail.com';
+                    status.className = 'form-status success';
+                    status.style.display = 'block';
+                    
+                    // Reset form
+                    document.getElementById('contactForm').reset();
+                    submitBtn.textContent = 'Send Message';
+                    submitBtn.disabled = false;
+                    
+                    // Hide status after 5 seconds
+                    setTimeout(() => {
+                        status.style.display = 'none';
+                    }, 5000);
+                    
+                }, function(error) {
+                    // Error handling
+                    console.log('FAILED...', error);
+                    status.innerHTML = 'Sorry, there was an error sending your message. Please try again.';
+                    status.className = 'form-status error';
+                    status.style.display = 'block';
+                    
+                    // Reset button
+                    submitBtn.textContent = 'Send Message';
+                    submitBtn.disabled = false;
+                    
+                    // Hide status after 5 seconds
+                    setTimeout(() => {
+                        status.style.display = 'none';
+                    }, 5000);
+                });
+        });
+
+        // Iconic Works Direct Click-to-Enlarge with Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const workImages = document.querySelectorAll('.work-images');
+            
+            workImages.forEach(workImage => {
+                workImage.addEventListener('click', function() {
+                    // Get all images in this work item
+                    const images = this.querySelectorAll('.work-image');
+                    const currentActive = this.querySelector('.work-image.active');
+                    const currentIndex = Array.from(images).indexOf(currentActive);
+                    
+                    // Store all image data for navigation
+                    const imageData = Array.from(images).map(img => ({
+                        src: img.src,
+                        alt: img.alt
+                    }));
+                        // Create modal with navigation
+                        const modal = document.createElement('div');
+                        modal.className = 'image-modal';
+                        modal.innerHTML = `
+                            <div class="image-modal-content">
+                                <span class="image-modal-close">&times;</span>
+                                <div class="image-modal-navigation">
+                                    <button class="nav-arrow nav-prev" style="display: none;">&lt;</button>
+                                    <img src="${imageData[currentIndex].src}" alt="${imageData[currentIndex].alt}" class="enlarged-image">
+                                    <button class="nav-arrow nav-next">&gt;</button>
+                                </div>
+                                <div class="image-modal-caption">${imageData[currentIndex].alt}</div>
+                                <div class="image-modal-counter">${currentIndex + 1} / ${imageData.length}</div>
+                            </div>
+                        `;
+                        
+                        document.body.appendChild(modal);
+                        
+                        // Show modal
+                        setTimeout(() => {
+                            modal.style.opacity = '1';
+                        }, 10);
+                        
+                        // Navigation functionality
+                        const enlargedImg = modal.querySelector('.enlarged-image');
+                        const caption = modal.querySelector('.image-modal-caption');
+                        const counter = modal.querySelector('.image-modal-counter');
+                        const prevBtn = modal.querySelector('.nav-prev');
+                        const nextBtn = modal.querySelector('.nav-next');
+                        let currentImgIndex = currentIndex;
+                        
+                        function updateModalImage() {
+                            enlargedImg.src = imageData[currentImgIndex].src;
+                            enlargedImg.alt = imageData[currentImgIndex].alt;
+                            caption.textContent = imageData[currentImgIndex].alt;
+                            counter.textContent = `${currentImgIndex + 1} / ${imageData.length}`;
+                            
+                            // Show/hide navigation arrows
+                            prevBtn.style.display = currentImgIndex === 0 ? 'none' : 'block';
+                            nextBtn.style.display = currentImgIndex === imageData.length - 1 ? 'none' : 'block';
+                        }
+                        
+                        // Next image
+                        nextBtn.addEventListener('click', function() {
+                            if (currentImgIndex < imageData.length - 1) {
+                                currentImgIndex++;
+                                updateModalImage();
+                            }
+                        });
+                        
+                        // Previous image
+                        prevBtn.addEventListener('click', function() {
+                            if (currentImgIndex > 0) {
+                                currentImgIndex--;
+                                updateModalImage();
+                            }
+                        });
+                        
+                        // Close modal function
+                        const closeModal = function() {
+                            modal.style.opacity = '0';
+                            setTimeout(() => {
+                                document.body.removeChild(modal);
+                            }, 300);
+                        };
+                        
+                        // Close modal functionality
+                        const closeBtn = modal.querySelector('.image-modal-close');
+                        closeBtn.addEventListener('click', closeModal);
+                        
+                        // Close on background click (but not on navigation buttons)
+                        modal.addEventListener('click', function(e) {
+                            if (e.target === modal) {
+                                closeModal();
+                            }
+                        });
+                        
+                        // Close on ESC key
+                        document.addEventListener('keydown', function(e) {
+                            if (e.key === 'Escape' && document.body.contains(modal)) {
+                                closeModal();
+                            }
+                        });
+                        
+                        // Initialize navigation display
+                        updateModalImage();
+                    }
+                );
+            });
+        });
     </script>
 </body>
 </html>

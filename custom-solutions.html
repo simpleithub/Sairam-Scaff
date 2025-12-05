@@ -2,11 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Solutions - Sairam Scaff</title>
     <link rel="stylesheet" href="static/saira-enterprises.css">
     <link rel="stylesheet" href="static/custom-solutions.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- EmailJS library for form submission -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- EmailJS Configuration -->
+    <script src="static/js/emailjs-config.js"></script>
 </head>
 <body>
     <header class="header beautiful-header">
@@ -26,7 +32,7 @@
     <section class="custom-solutions-gallery">
         <div class="solution-card">
             <div class="solution-img-wrap">
-                <img src="static/images/trolley.jpeg" alt="Trolley" class="solution-img" onclick="openLightbox(this)">
+                <img src="static/images/trolley.jpeg" alt="Trolley" class="solution-img" onclick="openLightbox(this)" loading="lazy">
             </div>
             <div class="solution-info">
                 <h2>TROLLEY</h2>
@@ -35,7 +41,7 @@
         </div>
         <div class="solution-card">
             <div class="solution-img-wrap">
-                <img src="static/images/pipelining.jpeg" alt="Pipelining" class="solution-img" onclick="openLightbox(this)">
+                <img src="static/images/pipelining.jpeg" alt="Pipelining" class="solution-img" onclick="openLightbox(this)" loading="lazy">
             </div>
             <div class="solution-info">
                 <h2>AIR & GAS PIPELINE</h2>
@@ -44,7 +50,7 @@
         </div>
         <div class="solution-card">
             <div class="solution-img-wrap">
-                <img src="static/images/welding.jpeg" alt="Welding Booth" class="solution-img" onclick="openLightbox(this)">
+                <img src="static/images/welding.jpeg" alt="Welding Booth" class="solution-img" onclick="openLightbox(this)" loading="lazy">
             </div>
             <div class="solution-info">
                 <h2>WELDING BOOTH</h2>
@@ -59,6 +65,32 @@
     </div>
     <section class="contact-section" id="contact">
         <h2>CONTACT US</h2>
+        
+        <!-- Contact Form -->
+        <div class="contact-form-container">
+            <form class="contact-form" id="contactForm">
+                <input type="hidden" name="to_email" value="sairamscaff2025@gmail.com">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Phone Number" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email ID" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+                <div class="form-status" id="formStatus" style="display: none;"></div>
+            </form>
+        </div>
+        
         <div class="contact-row">
             <div class="contact-card">
                 <i class="fas fa-phone"></i>
@@ -86,6 +118,7 @@
             <strong>Other Pages:</strong>
             <a href="/">Home</a> |
             <a href="/#about">About</a> |
+            <a href="/#iconic-works">Iconic Works</a> |
             <a href="/#services">Services</a> |
             <a href="#contact">Contact</a>
         </div>
@@ -130,6 +163,12 @@
             
         </div>
     </section>
+    <!-- Floating Get Quote Button -->
+    <a href="#contact" class="floating-quote-btn" id="floatingQuoteBtn">
+        <i class="fas fa-comment-dots"></i>
+        <span>Get Quote</span>
+    </a>
+
     <script>
         // Lightbox logic
         function openLightbox(img) {
@@ -166,6 +205,67 @@
         switchHeroBg();
         // Change image every 4 seconds
         setInterval(switchHeroBg, 4000);
+
+        // Smooth scroll for floating button
+        document.getElementById('floatingQuoteBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('contact').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Contact Form Functionality
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const status = document.getElementById('formStatus');
+            const submitBtn = this.querySelector('.submit-btn');
+            
+            // Show loading state
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // EmailJS Configuration
+            // Initialize EmailJS with your public key from configuration
+            emailjs.init(window.EMAILJS_CONFIG.PUBLIC_KEY);
+            
+            // Send form data using EmailJS
+            emailjs.sendForm(window.EMAILJS_CONFIG.SERVICE_ID, window.EMAILJS_CONFIG.TEMPLATE_ID, this)
+                .then(function(response) {
+                    // Success handling
+                    console.log('SUCCESS!', response.status, response.text);
+                    status.innerHTML = 'Thank you! Your message has been sent to sairamscaff2025@gmail.com';
+                    status.className = 'form-status success';
+                    status.style.display = 'block';
+                    
+                    // Reset form
+                    document.getElementById('contactForm').reset();
+                    submitBtn.textContent = 'Send Message';
+                    submitBtn.disabled = false;
+                    
+                    // Hide status after 5 seconds
+                    setTimeout(() => {
+                        status.style.display = 'none';
+                    }, 5000);
+                    
+                }, function(error) {
+                    // Error handling
+                    console.log('FAILED...', error);
+                    status.innerHTML = 'Sorry, there was an error sending your message. Please try again.';
+                    status.className = 'form-status error';
+                    status.style.display = 'block';
+                    
+                    // Reset button
+                    submitBtn.textContent = 'Send Message';
+                    submitBtn.disabled = false;
+                    
+                    // Hide status after 5 seconds
+                    setTimeout(() => {
+                        status.style.display = 'none';
+                    }, 5000);
+                });
+        });
     </script>
 </body>
 </html>
