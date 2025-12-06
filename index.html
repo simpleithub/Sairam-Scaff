@@ -385,19 +385,21 @@
                         src: img.src,
                         alt: img.alt
                     }));
-                        // Create modal with navigation
+                        // Create modal with navigation arrows below image
                         const modal = document.createElement('div');
                         modal.className = 'image-modal';
                         modal.innerHTML = `
                             <div class="image-modal-content">
                                 <span class="image-modal-close">&times;</span>
+                                <img src="${imageData[currentIndex].src}" alt="${imageData[currentIndex].alt}" class="enlarged-image">
                                 <div class="image-modal-navigation">
                                     <button class="nav-arrow nav-prev" style="display: none;">&lt;</button>
-                                    <img src="${imageData[currentIndex].src}" alt="${imageData[currentIndex].alt}" class="enlarged-image">
+                                    <div class="caption-container">
+                                        <div class="image-modal-caption">${imageData[currentIndex].alt}</div>
+                                        <div class="image-modal-counter">${currentIndex + 1} / ${imageData.length}</div>
+                                    </div>
                                     <button class="nav-arrow nav-next">&gt;</button>
                                 </div>
-                                <div class="image-modal-caption">${imageData[currentIndex].alt}</div>
-                                <div class="image-modal-counter">${currentIndex + 1} / ${imageData.length}</div>
                             </div>
                         `;
                         
