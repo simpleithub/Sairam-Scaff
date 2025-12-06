@@ -1212,7 +1212,7 @@ body, h1, h2, h3, h4, h5, h6, p, span, div, a, li {
 }
 
 .floating-quote-btn i {
-    font-size: 18px;
+    font-size: 36px;
 }
 
 .floating-quote-btn span {
@@ -1248,6 +1248,6 @@ body, h1, h2, h3, h4, h5, h6, p, span, div, a, li {
     }
     
     .floating-quote-btn i {
-        font-size: 20px;
+        font-size: 40px;
     }
 }

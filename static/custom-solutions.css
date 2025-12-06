@@ -391,7 +391,7 @@
     background: linear-gradient(45deg, #156ca0, #1d84c9);
 }
 .floating-quote-btn i {
-    font-size: 18px;
+    font-size: 36px;
 }
 
 /* Responsive adjustments for contact form */
@@ -446,7 +446,7 @@
     }
     
     .floating-quote-btn i {
-        font-size: 16px;
+        font-size: 40px;
     }
 }
 
